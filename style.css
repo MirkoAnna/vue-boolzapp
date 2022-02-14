@@ -5,8 +5,87 @@
 }
 
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
     background: linear-gradient(to top,
-    rgb(255,255,255) 80%, rgb(255,255,255) 80%, rgb(0,140,126) 20%, rgb(0,140,126) 20%);
+    rgb(255, 255, 255) 80%, rgb(255, 255, 255) 80%, rgb(0, 140, 126) 20%, rgb(0 ,140, 126) 20%);
 }
+
+/* COMMON */
+.border-right {
+    border-right: 1px solid grey;
+}
+/* FINE COMMON */
+
+
+.container {
+    display: flex;
+    width: 80%;
+    height: 95%;
+}
+
+
+/* Menù di sinistra */
+.container .left-container {
+    width: 40%;
+    height: 100%;
+    background-color:  rgb(249, 249, 249);
+
+}
+
+.container .left-container .notifications {
+    width: 100%;
+    height: 11.5%;
+    background-color: rgb(123, 214, 249);
+}
+
+.container .left-container .research {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 8%;
+}
+
+.container .left-container .research input {
+    width: 80%;
+    padding: 1%;
+}
+
+.container .left-container .contacts-list {
+    width: 100%;
+    height: calc(100% - 10% - 11.5% - 8%);
+    background-color: burlywood;
+    overflow-y: scroll;
+}
+/* Fine menù sinistra */
+
+
+.top-bar {
+    width: 100%;
+    height: 10%;
+    background-color: rgb(231, 231, 231);
+}
+
+
+/* Menù di destra */
+.container .right-container {
+    width: calc(100% - 40%);
+    height: 100%;
+    background-color: rgb(66, 5, 5);
+}
+
+.container .right-container .box-messages {
+    width: 100%;
+    height: calc(100% - 10% - 10%);
+    background-image: url('img/mine.jpg');
+}
+
+.container .right-container .chat-text {
+    height: 10%;
+    width: 100%;
+    background-color: rgb(242, 235, 231);
+}
+/* Fine menù destra */
