@@ -4,42 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CDN fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Fine CDN fontawesome -->
+
     <link rel="stylesheet" href="style.css">
     <title>Boolzapp</title>
 </head>
 <body>
     
-    <!-- Inizio container -->
-    <div class="container" id="app">
+    <!-- CONTENITORE PRINCIPALE -->
+    <div  class="container" id="app" v-cloak>
 
 
         <!-- MENU' DI SINISTRA -->
         <div class="left-container">
 
-            <!-- Barra superiore -->
+
+            <!-- BARRA SUPERIORE -->
             <div class="top-bar border-right">
 
+                <!-- Menù profilo utente -->
+                <div class="user-area w-60">
+                        <img class="avatar" src="img/avatar_io.jpg" alt="avatar1">
+                        <span> Nome Utente</span>
+                    </div>
+                <!-- Fine menù profilo utente -->
+                
+                <!-- Icone -->
+                <div class="box-icons icons-style1">
+                    <i class="fa-solid fa-circle-notch"></i>
+                    <i class="fa-solid fa-message"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <!-- Fine icone -->
             </div>
-            <!-- Fine barra superiore -->
+            <!-- FINE BARRA SUPERIORE -->
 
-            <!-- Notifiche -->
+
+            <!-- AREA NOTIFICHE -->
             <div class="notifications">
-
+                <i class="fa-solid fa-bell-slash"></i>
+                <div>
+                    <p>Ricevi notifiche di nuovi messaggi</p>
+                    <p>Attiva notifiche desktop</p>
+                </div>
             </div>
-            <!-- Fine area notifiche -->
+            <!-- FINE AREA NOTIFICHE -->
 
-            <!-- Area ricerca -->
+
+            <!-- AREA DI RICERCA CHAT -->
             <div class="research">
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <div>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
             </div>
-            <!-- Fine area notifiche -->
+            <!-- FINE AREA DI RICERCA CHAT-->
 
-            <!-- Area contatti -->
+            
+            <!-- AREA LISTA CONTATTI -->
             <div class="contacts-list">
 
+                <div class="contact" v-for="(contact, index) in contacts">
+                    <img class="avatar" v-bind:src="'img/avatar' + contact.avatar + '.jpg'"  alt="avatar + 'contact.avatar'">
+                    <div class="side-text">
+                        <p>{{contact.name}}</p>
+                        <p class="small-text">{{contact.messages[1]['text']}}</p>
+                    </div>
+                </div>
+
             </div>
-            <!-- Fine area contatti -->
+            <!-- FINE AREA LISTA CONTATTI -->
+
+
         </div>
         <!-- FINE MENU' DI SINISTRA -->
 
@@ -47,33 +86,85 @@
         <!-- MENU' DI DESTRA -->
         <div class="right-container">
 
-            <!-- Barra superiore -->
+
+            <!-- BARRA SUPERIORE -->
             <div class="top-bar">
 
+                <!-- Menù profilo utente -->
+                <div class="user-box">
+                    <img class="avatar" src="img/avatar_1.jpg" alt="">
+
+                    <div class="side-text">
+                        <div>
+                            <p>Michele</p>
+                        </div>
+                        <div>
+                            <p class="small-text">Ultimo accesso oggi alle 10/01/2020</p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Fine menù profilo utente -->
+
+                <!-- Icone -->
+                <div class="box-icons icons-style1">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-paperclip"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <!-- Fine icone -->
+
             </div>
-            <!-- Fine barra superiore -->
+            <!-- FINE BARRA SUPERIORE -->
 
-            <!-- Area messaggi -->
-            <div class="box-messages">
+
+            <!-- AREA MESSAGGI -->
+            <div class="area-messages">
+
+                <!-- Messaggi utente -->
+                <div class="box-message user">
+                    <span class="message green">Hai portato a spasso il cane?</span>
+                    <span class="message green">Ricordati di dargli da mangiare!</span>
+                </div>
+                <!-- Fine messaggi utente -->
+
+                <!-- Messaggi interlocutore -->
+                <div class="box-message interlocutor">
+                    <span class="message white">Tutto Fatto!</span>
+                </div>
+                <!-- Fine messaggi interlocutore -->
 
             </div>
-            <!-- Fine area messaggi -->
+            <!-- FINE AREA MESSAGGI -->
 
-            <!-- Menù chat -->
+
+            <!-- MENU' CHAT TESTO -->
             <div class="chat-text">
 
+                <i class="fa-regular fa-face-smile icons-style1"></i>
+
+                <input type="text" placeholder="Scrivi messaggio">
+
+                <i class="fa-solid fa-microphone icons-style1"></i>
+                
             </div>
-            <!-- Fine menù chat -->
+            <!-- FINE MENU' CHAT TESTO -->
 
         </div>
         <!-- FINE MENU' DI DESTRA -->
 
-        
+
     </div>
-    <!-- Fine container -->
+    <!-- FINE CONTENITORE PRINCIPALE -->
 
 
+
+
+
+    <!-- CDN VUE.JS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- FINE CDN VUE.JS -->
+
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
