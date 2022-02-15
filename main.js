@@ -2,6 +2,10 @@ const vue = new Vue (
 	{
      el: '#app',
      data: {
+        
+         active: 0,
+         sentMessage: '',
+
         contacts: [
                 {
                     name: 'Michele',
@@ -87,6 +91,31 @@ const vue = new Vue (
                     ],
                 },
             ],
+        },
+        methods: {
+            sendMessage() {
+                if(this.sentMessage != '') {
+
+                    this.contacts[this.active].messages.push({
+                            date: '',
+                            text: this.sentMessage,
+                            status: 'sent'
+                        });
+                    setTimeout(this.receiveMessage, 1000);
+                }
+            },
+            receiveMessage() {
+                this.contacts[this.active].messages.push(
+                    {
+                        date: '',
+                        text: 'Ok',
+                        status: 'received'
+                    }
+                );
+            },
+            contactTracker(index) {
+                this.active = index;
+            },
         },
     }
 )

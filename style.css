@@ -15,6 +15,7 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    font-family: 'Lato', sans-serif;
     background: linear-gradient(to top,
     rgb(255, 255, 255) 80%, rgb(255, 255, 255) 80%, rgb(0, 140, 126) 20%, rgb(0 ,140, 126) 20%);
 }
@@ -64,13 +65,22 @@ i:hover {
 
 
 /* Avatar */
-.avatar {
+.avatar-top {
     vertical-align: middle;
     width: 40px;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 50%;
     margin-right: 3%;
 }
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 3%;
+}
+
 /* Fine avatar */
 
 
@@ -89,6 +99,18 @@ i:hover {
     color: rgb(95, 104, 107);
 }
 
+.message-text {
+    font-size: 80%;
+}
+
+.date-text {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    font-size: 60%;
+    color: rgb(95, 104, 107);
+}
+
 .icons-style1 {
     font-size: 120%;
     color: rgb(168, 168, 168);
@@ -103,27 +125,15 @@ i:hover {
 /* Fine margin */
 
 
-/* Colori di sfondo */
-.green {
-    background-color: rgb(208, 248, 182);  
-}
-
-.white {
+.received {
     background-color: white;
-}
-/* Fine colori di sfondo */
-
-
-.user {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    margin: 1% 0;
 }
 
-.interlocutor {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.sent {
+    margin: 1% 0;
+    margin-left: auto;
+    background-color: rgb(208, 248, 182);  
 }
 
 /* FINE COMUNI */
@@ -269,12 +279,14 @@ i:hover {
 
 /* Struttura messaggi */
 .container .right-container .area-messages .box-message {
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .container .right-container .area-messages .message {
-    max-width: 45%;
-    margin: 1% 0;
+    position: relative;
+    max-width: 40%;
+    max-height: 50%;
     padding: 2.5%;
     border-radius: 10px;
 }

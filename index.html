@@ -27,7 +27,7 @@
 
                 <!-- Menù profilo utente -->
                 <div class="user-area w-60">
-                        <img class="avatar" src="img/avatar_io.jpg" alt="avatar1">
+                        <img class="avatar-top" src="img/avatar_io.jpg" alt="avatar1">
                         <span> Nome Utente</span>
                     </div>
                 <!-- Fine menù profilo utente -->
@@ -67,11 +67,11 @@
             <!-- AREA LISTA CONTATTI -->
             <div class="contacts-list">
 
-                <div class="contact" v-for="(contact, index) in contacts">
+                <div class="contact" v-for="(contact, index) in contacts" @click="contactTracker(index)">
                     <img class="avatar" v-bind:src="'img/avatar' + contact.avatar + '.jpg'"  alt="avatar + 'contact.avatar'">
                     <div class="side-text">
                         <p>{{contact.name}}</p>
-                        <p class="small-text">{{contact.messages[1]['text']}}</p>
+                        <p class="small-text"><!--Da risolvere {{contact[active]['text']}} --></p>
                     </div>
                 </div>
 
@@ -92,11 +92,11 @@
 
                 <!-- Menù profilo utente -->
                 <div class="user-box">
-                    <img class="avatar" src="img/avatar_1.jpg" alt="">
+                    <img class="avatar-top" :src="`img/avatar${contacts[active].avatar}.jpg`" alt="">
 
                     <div class="side-text">
                         <div>
-                            <p>Michele</p>
+                            <p>{{contacts[active].name}}</p>
                         </div>
                         <div>
                             <p class="small-text">Ultimo accesso oggi alle 10/01/2020</p>
@@ -121,18 +121,14 @@
             <!-- AREA MESSAGGI -->
             <div class="area-messages">
 
-                <!-- Messaggi utente -->
-                <div class="box-message user">
-                    <span class="message green">Hai portato a spasso il cane?</span>
-                    <span class="message green">Ricordati di dargli da mangiare!</span>
-                </div>
-                <!-- Fine messaggi utente -->
+                <div class="box-message">
+                         <!-- -->                                                               <!-- Se status in messaggio è uguale a sent allora aggiungi classe sent, se no aggiungi classe received -->
+                    <div v-for="(message, index) in contacts[active].messages" class="message message-text" v-bind:class="message.status == 'sent' ? 'sent' : 'received'">
+                        <p>{{message.text}}</p>
+                        <p class="date-text">{{message.date}}</p>
+                    </div>
 
-                <!-- Messaggi interlocutore -->
-                <div class="box-message interlocutor">
-                    <span class="message white">Tutto Fatto!</span>
                 </div>
-                <!-- Fine messaggi interlocutore -->
 
             </div>
             <!-- FINE AREA MESSAGGI -->
@@ -143,7 +139,7 @@
 
                 <i class="fa-regular fa-face-smile icons-style1"></i>
 
-                <input type="text" placeholder="Scrivi messaggio">
+                <input type="text" placeholder="Scrivi messaggio" v-model="sentMessage" @keyup.enter="sendMessage()">
 
                 <i class="fa-solid fa-microphone icons-style1"></i>
                 
