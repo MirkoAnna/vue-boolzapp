@@ -5,6 +5,7 @@ const vue = new Vue (
         
          active: 0,
          sentMessage: '',
+         textResearch: '',
 
         contacts: [
                 {
@@ -93,11 +94,12 @@ const vue = new Vue (
             ],
         },
         methods: {
+
             sendMessage() {
                 if(this.sentMessage != '') {
 
                     this.contacts[this.active].messages.push({
-                            date: '',
+                            date: dayjs().format('DD-MM-YYYY HH:mm:ss'),
                             text: this.sentMessage,
                             status: 'sent'
                         });
@@ -107,15 +109,35 @@ const vue = new Vue (
             receiveMessage() {
                 this.contacts[this.active].messages.push(
                     {
-                        date: '',
+                        date: dayjs().format('DD-MM-YYYY HH:mm:ss'),
                         text: 'Ok',
                         status: 'received'
                     }
                 );
             },
+
             contactTracker(index) {
                 this.active = index;
             },
+
+            filterContacts() {
+
+                this.contacts.forEach((contact) => {
+
+                    if (contact.name.toLowerCase().includes(this.textResearch)) {
+
+                        contact.visible = true; 
+
+                    } else {
+                        
+                        contact.visible = false;
+
+                    }
+                });
+            },
+            // getLastMessage() {
+
+            // }
         },
     }
 )

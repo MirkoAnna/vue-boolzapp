@@ -58,7 +58,7 @@
             <div class="research">
                 <div>
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="textResearch" @keyup="filterContacts()">
                 </div>
             </div>
             <!-- FINE AREA DI RICERCA CHAT-->
@@ -67,11 +67,11 @@
             <!-- AREA LISTA CONTATTI -->
             <div class="contacts-list">
 
-                <div class="contact" v-for="(contact, index) in contacts" @click="contactTracker(index)">
+                <div class="contact" :class="(active == index) ? 'active' : ''" v-for="(contact, index) in contacts" @click="contactTracker(index)" v-show="contact.visible">
                     <img class="avatar" v-bind:src="'img/avatar' + contact.avatar + '.jpg'"  alt="avatar + 'contact.avatar'">
                     <div class="side-text">
                         <p>{{contact.name}}</p>
-                        <p class="small-text"><!--Da risolvere {{contact[active]['text']}} --></p>
+                        <p class="small-text">{{contact.text}}</p>
                     </div>
                 </div>
 
@@ -161,6 +161,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- FINE CDN VUE.JS -->
 
+    <!-- Day.JS -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
+    <!-- Fine Day.JS -->
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
