@@ -4,7 +4,10 @@ const vue = new Vue (
      data: {
         
          active: 0,
+        //  Istanzio variabile per il testo inserito nell'input chat testo
          sentMessage: '',
+
+        //  Istanzio variabile per il testo inserito nell'input research
          textResearch: '',
 
         contacts: [
@@ -93,8 +96,10 @@ const vue = new Vue (
                 },
             ],
         },
+        // Methods
         methods: {
 
+            // Funzione per poter mandare messaggi + setTimeout collegato alla funzione per riceverli
             sendMessage() {
                 if(this.sentMessage != '') {
 
@@ -106,6 +111,9 @@ const vue = new Vue (
                     setTimeout(this.receiveMessage, 1000);
                 }
             },
+            // Fine funzione per poter mandare messaggi + setTimeout collegato alla funzione per riceverli
+
+            // Funzione per ricevere messaggi
             receiveMessage() {
                 this.contacts[this.active].messages.push(
                     {
@@ -115,11 +123,15 @@ const vue = new Vue (
                     }
                 );
             },
+            // Fine funzione per ricevere messaggi
 
+            // Funzione per tener traccia dell'elemento selezionato
             contactTracker(index) {
                 this.active = index;
             },
+            // Fine funzione per tener traccia dell'elemnto selezionato
 
+            // Funzione per filtrare contatti tramite input di ricerca
             filterContacts() {
 
                 this.contacts.forEach((contact) => {
@@ -135,9 +147,8 @@ const vue = new Vue (
                     }
                 });
             },
-            // getLastMessage() {
-
-            // }
+            // Fine funzione per filtrare contatti tramite input di ricerca
         },
+        // Fine methods
     }
 )
